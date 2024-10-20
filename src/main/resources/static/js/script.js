@@ -54,6 +54,20 @@ function redo() {
 document.getElementById('undo-button').addEventListener('click', undo);
 document.getElementById('redo-button').addEventListener('click', redo);
 
+// フォント変更ボタンのクリックでフォント選択を表示/非表示にする関数
+function toggleFontSelector() {
+    const fontSelector = document.getElementById('fontSelector');
+    fontSelector.style.display = fontSelector.style.display === 'none' ? 'block' : 'none';
+}
+
+// フォントを変更する関数
+function changeFont() {
+    const textarea = document.querySelector('#content');
+    const selectedFont = document.getElementById('fontSelect').value;
+    textarea.style.fontFamily = selectedFont; // テキストエリアのフォントを変更
+}
+
+
 // ファイルを保存する関数
 function saveFile() {
     const textarea = document.querySelector('#content');

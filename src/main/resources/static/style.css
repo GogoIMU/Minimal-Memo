@@ -18,10 +18,16 @@ textarea {
     width: 61.8vw; /* 横幅を黄金比で指定 */
     height: 80vh; /* 縦の高さ */
     padding: 20px;
-    border: none;
+    border: 1px solid rgba(0, 0, 0, 0.2); /* 薄い色のボーダー */
     box-sizing: border-box;
     resize: none;
     overflow: hidden; /* スクロールバーを非表示にする */
+}
+
+/* フォーカス時のボーダーをカスタマイズ */
+textarea:focus {
+    outline: none; /* デフォルトのアウトラインを非表示 */
+    border: 1px solid rgba(0, 0, 0, 0.2); /* 薄い色のボーダーを維持 */
 }
 
 #charCount {
@@ -30,6 +36,24 @@ textarea {
     padding: 5px;
     border-radius: 5px; /* 角を丸める */
 }
+
+/* ボタンエリアを中央に配置 */
+.button-area {
+    display: flex; /* ボタンを横並びにする */
+    justify-content: center; /* 中央揃え */
+    position: relative; /* フォント選択のセレクトボックスの絶対位置の基準 */
+    margin-top: 10px; /* 上部との間にスペースを追加 */
+}
+
+#fontSelector {
+    display: none; /* 初期は非表示 */
+    position: absolute; /* 絶対位置に変更 */
+    top: 60px; /* ボタンエリアの下に表示 */
+    left: 100px; /* 左側に配置 */
+    right: 0; /* 右側にも配置 */
+    margin: 0 auto; /* セレクトボックスを中央揃えにする */
+}
+
 
 input[type="text"], input[type="file"] {
     border: 1px solid #ccc; /* シンプルなボーダー */
@@ -46,30 +70,18 @@ button {
     margin: 10px; /* ボタンのマージンを調整 */
 }
 
-#undo-button, #redo-button, #save-button, #load-button {
+#save-button, #load-button, #undo-button, #redo-button {
     width: 50px;
     height: 50px;
-    position: absolute; /* 絶対位置 */
-    bottom: 10px; /* 下から10pxに配置 */
 }
 
-#undo-button {
-    left: 10px; /* 左端に配置 */
+#font-button {
+    width: 50px;
+    height: 50px;
 }
 
-#redo-button {
-    left: 80px; /* Undoボタンの隣に配置 */
-}
-
-#save-button {
-    right: 80px; /* セーブボタンは右側に固定、ロードボタンの隣に配置 */
-}
-
-#load-button {
-    right: 10px; /* ロードボタンは画面の右端に固定 */
-}
-
-#save-button img, #load-button img, #undo-button img, #redo-button img {
+/* ボタンの画像サイズを調整 */
+#save-button img, #load-button img, #undo-button img, #redo-button img, #font-button img {
     width: 100%;
     height: auto;
 }
