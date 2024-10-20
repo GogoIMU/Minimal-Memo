@@ -21,8 +21,26 @@ textarea {
     border: 1px solid rgba(0, 0, 0, 0.2); /* 薄い色のボーダー */
     box-sizing: border-box;
     resize: none;
-    overflow: hidden; /* スクロールバーを非表示にする */
+    overflow: auto; /* スクロールバーを表示する */
     font-size: 18px;
+}
+
+textarea::-webkit-scrollbar {
+    width: 8px;
+}
+
+textarea::-webkit-scrollbar-track {
+    background: #f0f0f0;
+    border-radius: 10px;
+}
+
+textarea::-webkit-scrollbar-thumb {
+    background: #cccccc;
+    border-radius: 10px;
+}
+
+textarea::-webkit-scrollbar-thumb:hover {
+    background: #aaaaaa;
 }
 
 /* フォーカス時のボーダーをカスタマイズ */
