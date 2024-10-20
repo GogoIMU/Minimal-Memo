@@ -24,20 +24,17 @@ public class MinimalMemoController {
         } else {
             model.addAttribute("content", "");
         }
-
         return "editor";
     }
 
 
     @PostMapping("/save")
     public String saveContent(@RequestParam("content") String content, Model model) throws IOException {
-        String filePath = System.getProperty("user.home") + "Downloads/saved_contents.txt";
-
         if (content == null || content.trim().isEmpty()) {
                 model.addAttribute("message","内容が空です");
                     return "editor";
             }
-        Files.write(Paths.get(filePath), content.getBytes());
+        Files.write(Paths.get(FILE_PATH), content.getBytes());
         model.addAttribute("message", "ファイルが保存されました");
         model.addAttribute("content", content); // 保存後の内容を再表示
         return "editor";
@@ -45,10 +42,9 @@ public class MinimalMemoController {
 
     @GetMapping("/load")
     public String loadContent(Model model) throws IOException {
-            String filePath = System.getProperty("user.home") + "Downloads/saved_contents.txt";
 
-            if (Files.exists(Paths.get(filePath))) {
-            String content = new String(Files.readAllBytes(Paths.get(filePath)));
+            if (Files.exists(Paths.get(FILE_PATH))) {
+            String content = new String(Files.readAllBytes(Paths.get(FILE_PATH)));
             model.addAttribute("content", content);
         } else {
             model.addAttribute("message", "ファイルが見つかりません");
