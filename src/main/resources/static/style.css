@@ -22,6 +22,7 @@ textarea {
     box-sizing: border-box;
     resize: none;
     overflow: hidden; /* スクロールバーを非表示にする */
+    font-size: 18px;
 }
 
 /* フォーカス時のボーダーをカスタマイズ */
@@ -49,7 +50,7 @@ textarea:focus {
     display: none; /* 初期は非表示 */
     position: absolute; /* 絶対位置に変更 */
     top: 60px; /* ボタンエリアの下に表示 */
-    left: 100px; /* 左側に配置 */
+    left: 110px; /* 左側に配置 */
     right: 0; /* 右側にも配置 */
     margin: 0 auto; /* セレクトボックスを中央揃えにする */
 }
@@ -84,4 +85,23 @@ button {
 #save-button img, #load-button img, #undo-button img, #redo-button img, #font-button img {
     width: 100%;
     height: auto;
+}
+
+/* フォント変更群*/
+.shippori-mincho-regular {
+  font-family: "Shippori Mincho", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.hina-mincho-regular {
+  font-family: "Hina Mincho", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.zen-maru-gothic-regular {
+  font-family: "Zen Maru Gothic", serif;
+  font-weight: 400;
+  font-style: normal;
 }
