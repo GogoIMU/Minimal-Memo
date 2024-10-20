@@ -50,7 +50,7 @@ textarea:focus {
     display: none; /* 初期は非表示 */
     position: absolute; /* 絶対位置に変更 */
     top: 60px; /* ボタンエリアの下に表示 */
-    left: 110px; /* 左側に配置 */
+    left: 150px; /* 左側に配置 */
     right: 0; /* 右側にも配置 */
     margin: 0 auto; /* セレクトボックスを中央揃えにする */
 }
@@ -104,4 +104,20 @@ button {
   font-family: "Zen Maru Gothic", serif;
   font-weight: 400;
   font-style: normal;
+}
+
+/* ダークモード用 */
+body.dark-mode {
+    background-color: #121212; /* ダークモードの背景色 */
+    color: #f5f5f5; /* テキストの色 */
+}
+
+textarea.dark-mode {
+    background-color: #1e1e1e; /* テキストエリアの背景色 */
+    color: #f5f5f5; /* テキストの色 */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* 薄い白のボーダー */
+}
+
+.button-area.dark-mode {
+    background-color: #121212; /* ボタンエリアの背景色 */
 }

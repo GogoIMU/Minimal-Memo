@@ -112,3 +112,14 @@ function loadFile() {
     };
     fileInput.click();
 }
+
+// ダークモード用関数
+function toggleDarkMode() {
+    const body = document.body;
+    const textarea = document.getElementById('content');
+    const buttonArea = document.querySelector('.button-area');
+
+    body.classList.toggle('dark-mode'); // ボディにダークモードクラスを切り替え
+    textarea.classList.toggle('dark-mode'); // テキストエリアにダークモードクラスを切り替え
+    buttonArea.classList.toggle('dark-mode'); // ボタンエリアにダークモードクラスを切り替え
+}
