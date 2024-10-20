@@ -7,28 +7,28 @@
 </head>
 <body>
     <div class="container">
-    <!-- セーブボタン -->
-<form method="post" action="/save">
-<textarea id="content" name="content" th:text="${content}"></textarea>
-    <button id="save-button" type="submit">
+        <textarea id="content" name="content" th:text="${content}"></textarea>
+
+        <!-- 文字数カウント -->
+        <p><span id="charCount">0</span></p>
+
+        <!-- ボタンエリア -->
+        <button id="save-button" type="button">
         <img src="/images/floppy.png" alt="Save">
-    </button>
-</form>
-    <!-- ロードボタン -->
-<form method="get" action="/load">
-    <button id="load-button" type="submit">
-        <img src="/images/folder.png" alt="Load">
-    </button>
-</form>
-    <!-- 戻るボタン -->
-    <button id="undo-button" type="button" onclick="undo()">
-        <img src="/images/undo.png" alt="Undo">
-     </button>
-    <!-- やり直しボタン -->
-    <button id="redo-button" type="button" onclick="redo()">
-          <img src="/images/redo.png" alt="Redo">
-     </button>
+        </button>
+        <button id="load-button" type="button" onclick="loadFile()">
+            <img src="/images/folder.png" alt="Load">
+        </button>
+
+        <button id="undo-button" type="button" onclick="undo()">
+            <img src="/images/undo.png" alt="Undo">
+        </button>
+
+        <button id="redo-button" type="button" onclick="redo()">
+            <img src="/images/redo.png" alt="Redo">
+        </button>
     </div>
+
     <script src="/js/script.js"></script>
 </body>
 </html>
