@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="/style.css">
+    <meta charset="UTF-8">
+    <title>Minimal Memo</title>
+</head>
+<body>
+    <div class="container">
+<form method="post" action="/save">
+<textarea name="content" th:text="${content}"></textarea>
+    <button id="save-button" type="submit">
+        <img src="/images/floppy.png" alt="Save">
+    </button>
+</form>
+<form method="get" action="/load">
+    <button id="load-button" type="submit">
+        <img src="/images/folder.png" alt="Load">
+    </button>
+</form>
+    </div>
+</body>
+</html>
