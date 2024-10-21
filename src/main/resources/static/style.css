@@ -4,7 +4,6 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-color: #ffffff;
 }
 
 .container {
@@ -20,23 +19,34 @@ body {
 }
 
 .editor-container {
-    display: flex;
     position: relative;
     width: 100%;
-    height: 60vh;
+    height: 600px; /* 高さ固定 */
 }
 
+/* 行番号エリアのスタイル */
 #lineNumbers {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 94.5%;
+    width: 40px;
     font-size: 18px;
-    line-height: 1.5;
     padding-right: 5px;
+    overflow: hidden;
     text-align: right;
     background-color: #f4f4f4;
     padding-top: 16px;
     color: #666666;
+    user-select: none;
+    border-right: 1px solid #ccc; /* テキストエリアと行番号の間に線を追加 */
+    box-sizing: border-box;
 }
 
-textarea {
+#content {
+    position:absolute;
+    top: 0;
+    left: 40px;
     line-height: 1.5;
     width: 100%;
     height: 60vh;
@@ -44,8 +54,32 @@ textarea {
     border: 1px solid rgba(0, 0, 0, 0.2);
     box-sizing: border-box;
     resize: none;
-    overflow: auto;
     font-size: 18px;
+}
+
+#content::-webkit-scrollbar {
+    background-color: #ffffff;
+    --sb-track-color: #383c3e;
+    --sb-thumb-color: #989898;
+    --sb-size: 6px;
+  width: var(--sb-size);
+}
+
+#content::-webkit-scrollbar-track {
+  background: var(--sb-track-color);
+  border-radius: 3px;
+}
+
+#content::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color);
+  border-radius: 3px;
+}
+
+@supports not selector(::-webkit-scrollbar) {
+  body {
+      scrollbar-color: var(--sb-thumb-color)
+                     var(--sb-track-color);
+  }
 }
 
 #charCountWrapper {
