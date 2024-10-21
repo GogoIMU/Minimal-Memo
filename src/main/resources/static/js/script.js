@@ -124,47 +124,45 @@ function toggleDarkMode() {
     buttonArea.classList.toggle('dark-mode'); // ボタンエリアにダークモードクラスを切り替え
 }
 
+// テキストエリアと行番号エリアの取得
+const textArea = document.getElementById("content");
+const lineNumbers = document.getElementById("lineNumbers");
 
-    // 行番号用関数
-    function updateLineNumbers() {
-        const content = document.getElementById('content');
-        const lineNumbers = document.getElementById('lineNumbers');
-        const lineCount = content.value.split('\n').length; // テキストエリアを正しく参照
+// テキストエリアの行番号を更新する関数
+function updateLineNumbers() {
+    const textLines = textArea.value.split("\n");
 
-        let lineNumberHTML = '';
-        for (let i = 1; i <= lineCount; i++) {
-            lineNumberHTML += i + '<br>';
-        }
-        lineNumbers.innerHTML = lineNumberHTML;
+    let lineNumberHTML = "";
+    for (let i = 1; i <= textLines.length; i++) {
+        lineNumberHTML += i + '<br>';
     }
+    lineNumbers.innerHTML = lineNumberHTML;
+}
 
-    // スクロール同期
-    function syncScroll() {
-        const content = document.getElementById('content');
-        const lineNumbers = document.getElementById('lineNumbers');
-        lineNumbers.scrollTop = content.scrollTop;
+// テキストエリアの内容が変更された時に行番号を更新
+textArea.addEventListener("input", updateLineNumbers);
+
+// スクロール同期
+function syncScroll() {
+    lineNumbers.scrollTop = textArea.scrollTop;
+}
+
+// 行番号表示の切り替え機能
+function toggleLineNumbers() {
+    const isHidden = lineNumbers.style.display === 'none';
+    if (isHidden) {
+        lineNumbers.style.display = 'block';
+        updateLineNumbers();
+    } else {
+        lineNumbers.style.display = 'none';
     }
-
-    // 初期表示
-    window.onload = function() {
-        updateLineNumbers(); // ページ読み込み時に行番号を更新
-    };
-
-    function toggleLineNumbers() {
-        const lineNumbers = document.getElementById('lineNumbers');
-        const isHidden = lineNumbers.style.display === 'none';
-        if (isHidden) {
-            lineNumbers.style.display = 'block';
-            updateLineNumbers(); // 行番号を更新
-        } else {
-            lineNumbers.style.display = 'none';
-        }
-    }
+}
 
 // 初期表示
 window.onload = function() {
-    updateLineNumbers(); // ページ読み込み時に行番号を更新
+    updateLineNumbers();
 };
+
 
 // フォント選択ボックスの表示位置を調整
     function toggleFontSelector() {
