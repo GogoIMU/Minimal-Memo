@@ -35,9 +35,9 @@ body {
     padding-right: 5px;
     overflow: hidden;
     text-align: right;
-    background-color: #f4f4f4;
+    background-color: rgba(56, 60, 62, 0.8);
     padding-top: 16px;
-    color: #666666;
+    color: #989898;
     user-select: none;
     border-right: 1px solid #ccc;
     box-sizing: border-box;
@@ -64,23 +64,21 @@ body {
 /* Webkitベースのブラウザ向けスクロールバーのカスタマイズ */
 #content::-webkit-scrollbar {
     background-color: #ffffff;
-    width: 6px; /* スクロールバーの幅 */
+    width: 20px; /* スクロールバーの幅 */
 }
 
 #content::-webkit-scrollbar-track {
-    background: #383c3e;
-    border-radius: 3px;
+    background: rgba(56, 60, 62, 0.8);
 }
 
 #content::-webkit-scrollbar-thumb {
-    background: #989898;
-    border-radius: 3px;
+    background: rgba(152, 152, 152, 0.8);
 }
 
 /* 非Webkitベースブラウザの対応 */
 @supports not selector(::-webkit-scrollbar) {
     #content {
-        scrollbar-color: #989898 #383c3e; /* Firefoxなどでスクロールバーの色を設定 */
+        scrollbar-color:rgba(152, 152, 152, 0.8) rgba(56, 60, 62, 0.8); /* Firefoxなどでスクロールバーの色を設定 */
         scrollbar-width: thin; /* Firefoxなどでのスクロールバーの幅 */
     }
 }
