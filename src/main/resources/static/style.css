@@ -73,6 +73,32 @@ button img {
     margin: 0 auto; /* セレクトボックスを中央揃えにする */
 }
 
+/* フォントセレクトボックスの装飾 */
+#fontSelector::before,
+#fontSelector::after {
+    position: absolute;
+    content: '';
+    pointer-events: none;
+}
+
+/* フォントセレクトボックスのselect要素 */
+#fontSelector select {
+    appearance: none; /* デフォルトの矢印を非表示に */
+    height: 2.8em;
+    padding: .4em 2.2em .4em .8em;
+    border: none;
+    border-radius: 3px;
+    background-color: #d4d4d4;
+    color: #333;
+    font-size: 1em;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+#fontSelector select:focus {
+    outline: 2px solid #4a4a4a;
+}
+
 
 body.dark-mode {
     background-color: #121212;
