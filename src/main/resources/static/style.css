@@ -39,54 +39,59 @@ body {
     padding-top: 16px;
     color: #666666;
     user-select: none;
-    border-right: 1px solid #ccc; /* テキストエリアと行番号の間に線を追加 */
+    border-right: 1px solid #ccc;
     box-sizing: border-box;
 }
 
+/* テキストエリアのスタイル */
 #content {
-    position:absolute;
+    position: absolute;
     top: 0;
-    left: 40px;
+    left: 50%; /* 左端を画面の50%に */
+    transform: translateX(-50%); /* 中央揃えに */
     line-height: 1.5;
-    width: 100%;
+    width: calc(100% - 80px); /* 行番号エリアの幅を引いた全体幅 */
     height: 60vh;
     padding: 20px;
     border: 1px solid rgba(0, 0, 0, 0.2);
     box-sizing: border-box;
     resize: none;
     font-size: 18px;
+    overflow-y: auto;
 }
 
+
+/* Webkitベースのブラウザ向けスクロールバーのカスタマイズ */
 #content::-webkit-scrollbar {
     background-color: #ffffff;
-    --sb-track-color: #383c3e;
-    --sb-thumb-color: #989898;
-    --sb-size: 6px;
-  width: var(--sb-size);
+    width: 6px; /* スクロールバーの幅 */
 }
 
 #content::-webkit-scrollbar-track {
-  background: var(--sb-track-color);
-  border-radius: 3px;
+    background: #383c3e;
+    border-radius: 3px;
 }
 
 #content::-webkit-scrollbar-thumb {
-  background: var(--sb-thumb-color);
-  border-radius: 3px;
+    background: #989898;
+    border-radius: 3px;
 }
 
+/* 非Webkitベースブラウザの対応 */
 @supports not selector(::-webkit-scrollbar) {
-  body {
-      scrollbar-color: var(--sb-thumb-color)
-                     var(--sb-track-color);
-  }
+    #content {
+        scrollbar-color: #989898 #383c3e; /* Firefoxなどでスクロールバーの色を設定 */
+        scrollbar-width: thin; /* Firefoxなどでのスクロールバーの幅 */
+    }
 }
+
 
 #charCountWrapper {
-    text-align: right; /* 右端に文字数を表示 */
+    text-align: center; /* 右端に文字数を表示 */
     width: 100%;
-    font-size: 14px;
+    font-size: 18px;
     margin: 5px 0;
+    color:#4a4a4a;
 }
 
 .button-area {
