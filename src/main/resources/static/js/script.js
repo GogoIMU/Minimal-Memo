@@ -17,6 +17,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
     textarea.addEventListener('input', () => {
         charCountDisplay.textContent = textarea.value.length; // 文字数を更新
 
+            // タイピング音を再生
+              playTypingSound();
+
         // スタックが最大サイズを超えないように管理
         if (undoStack.length >= MAX_STACK_SIZE) {
             undoStack.shift(); // 最も古い状態を削除
@@ -175,4 +178,29 @@ window.onload = function() {
 
         fontSelector.style.display = fontSelector.style.display === 'block' ? 'none' : 'block';
     }
+
+let isMuted = false; // ミュート状態を管理する変数
+
+function toggleTypingSound() {
+    const typingSound = document.getElementById('typing-sound');
+    const muteButton = document.getElementById('mute-button');
+
+    isMuted = !isMuted; // 状態を切り替える
+
+    if (isMuted) {
+        muteButton.innerHTML = '<img src="/images/mute.png" alt="Unmute Typing Sound">'; // ミュート状態のアイコン
+    } else {
+        muteButton.innerHTML = '<img src="/images/unmute.png" alt="Mute Typing Sound">'; // アンミュート状態のアイコン
+    }
+}
+
+// タイピング音を再生する関数
+function playTypingSound() {
+    const typingSound = document.getElementById('typing-sound');
+    if (!isMuted) {
+        typingSound.currentTime = 0; // 音を最初から再生
+        typingSound.play();
+    }
+}
+
 

@@ -48,6 +48,11 @@
             <img src="/images/moon.png" alt="Dark Mode">
         </button>
 
+    <!-- タイピング音の音ボタン -->
+    <button id="mute-button" type="button" onclick="toggleTypingSound()">
+        <img src="/images/mute.png" alt="Mute Typing Sound">
+    </button>
+
         <!-- フォント選択のセレクトボックス -->
         <div id="fontSelector">
             <select id="fontSelect" onchange="changeFont()">
@@ -60,6 +65,7 @@
         </div>
     </div>
 </div>
+<audio id="typing-sound" src="/sounds/typing.mp3" preload="auto"></audio>
 <script src="/js/script.js"></script>
 </body>
 </html>
