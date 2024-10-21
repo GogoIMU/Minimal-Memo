@@ -123,3 +123,58 @@ function toggleDarkMode() {
     textarea.classList.toggle('dark-mode'); // テキストエリアにダークモードクラスを切り替え
     buttonArea.classList.toggle('dark-mode'); // ボタンエリアにダークモードクラスを切り替え
 }
+
+
+    // 行番号用関数
+    function updateLineNumbers() {
+        const content = document.getElementById('content');
+        const lineNumbers = document.getElementById('lineNumbers');
+        const lineCount = content.value.split('\n').length; // テキストエリアを正しく参照
+
+        let lineNumberHTML = '';
+        for (let i = 1; i <= lineCount; i++) {
+            lineNumberHTML += i + '<br>';
+        }
+        lineNumbers.innerHTML = lineNumberHTML;
+    }
+
+    // スクロール同期
+    function syncScroll() {
+        const content = document.getElementById('content');
+        const lineNumbers = document.getElementById('lineNumbers');
+        lineNumbers.scrollTop = content.scrollTop;
+    }
+
+    // 初期表示
+    window.onload = function() {
+        updateLineNumbers(); // ページ読み込み時に行番号を更新
+    };
+
+    function toggleLineNumbers() {
+        const lineNumbers = document.getElementById('lineNumbers');
+        const isHidden = lineNumbers.style.display === 'none';
+        if (isHidden) {
+            lineNumbers.style.display = 'block';
+            updateLineNumbers(); // 行番号を更新
+        } else {
+            lineNumbers.style.display = 'none';
+        }
+    }
+
+// 初期表示
+window.onload = function() {
+    updateLineNumbers(); // ページ読み込み時に行番号を更新
+};
+
+// フォント選択ボックスの表示位置を調整
+    function toggleFontSelector() {
+        const fontSelector = document.getElementById('fontSelector');
+        const fontButton = document.getElementById('font-button');
+        const rect = fontButton.getBoundingClientRect(); // ボタンの位置を取得
+
+        fontSelector.style.top = (rect.bottom + window.scrollY) + 'px'; // ボタンの下に表示
+        fontSelector.style.left = (rect.left + window.scrollX) + 'px'; // ボタンの左に合わせる
+
+        fontSelector.style.display = fontSelector.style.display === 'block' ? 'none' : 'block';
+    }
+

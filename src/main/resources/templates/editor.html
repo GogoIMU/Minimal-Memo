@@ -10,49 +10,56 @@
 </head>
 <body>
 <div class="container">
-    <textarea id="content" name="content" th:text="${content}"></textarea>
+    <!-- 行番号表示のスイッチボタン -->
+    <button id="toggleLineNumbers" type="button" onclick="toggleLineNumbers()">
+        <img src="/images/linenumber.png" alt="LineNumbers">
+    </button>
 
-    <!-- 文字数カウント -->
-    <p><span id="charCount">0</span></p>
+    <!-- テキストエリアと文字数カウントを含むコンテナ -->
+    <div class="editor-wrapper">
+        <div class="editor-container">
+            <!-- 行番号を表示するエリア -->
+            <div id="lineNumbers" class="line-numbers"></div>
+            <!-- テキストエリア -->
+            <textarea id="content" name="content" th:text="${content}" oninput="updateLineNumbers(); countCharacters();" onscroll="syncScroll()"></textarea>
+        </div>
+        <!-- 文字数カウント -->
+        <p id="charCountWrapper">文字数: <span id="charCount">0</span></p>
+    </div>
 
     <!-- ボタンエリア -->
-<div class="button-area">
-    <button id="undo-button" type="button" onclick="undo()">
-        <img src="/images/undo.png" alt="Undo">
-    </button>
+    <div class="button-area">
+        <button id="undo-button" type="button" onclick="undo()">
+            <img src="/images/undo.png" alt="Undo">
+        </button>
+        <button id="redo-button" type="button" onclick="redo()">
+            <img src="/images/redo.png" alt="Redo">
+        </button>
+        <button id="font-button" type="button" onclick="toggleFontSelector()">
+            <img src="/images/pen.png" alt="Font">
+        </button>
+        <button id="save-button" type="button">
+            <img src="/images/floppy.png" alt="Save">
+        </button>
+        <button id="load-button" type="button" onclick="loadFile()">
+            <img src="/images/folder.png" alt="Load">
+        </button>
+        <button id="dark-mode-button" type="button" onclick="toggleDarkMode()">
+            <img src="/images/moon.png" alt="Dark Mode">
+        </button>
 
-    <button id="redo-button" type="button" onclick="redo()">
-        <img src="/images/redo.png" alt="Redo">
-    </button>
-
-    <button id="font-button" type="button" onclick="toggleFontSelector()">
-        <img src="/images/pen.png" alt="Font">
-    </button>
-
-    <button id="save-button" type="button">
-        <img src="/images/floppy.png" alt="Save">
-    </button>
-
-    <button id="load-button" type="button" onclick="loadFile()">
-        <img src="/images/folder.png" alt="Load">
-    </button>
-    <button id="dark-mode-button" type="button" onclick="toggleDarkMode()">
-    <img src="/images/moon.png" alt="Dark Mode">
-</button>
-
-    <!-- フォント選択のセレクトボックス -->
-    <div id="fontSelector">
-        <select id="fontSelect" onchange="changeFont()">
-            <option value="Yu Gothic">游ゴシック</option>
-            <option value="Yu Mincho">游明朝</option>
-            <option value="Shippori Mincho">しっぽり明朝</option>
-            <option value="Hina Mincho">ひな明朝</option>
-            <option value="Zen Maru Gothic">ZEN丸ゴシック</option>
-            <!-- 他のフォントも必要に応じて追加 -->
-        </select>
+        <!-- フォント選択のセレクトボックス -->
+        <div id="fontSelector">
+            <select id="fontSelect" onchange="changeFont()">
+                <option value="Yu Gothic">游ゴシック</option>
+                <option value="Yu Mincho">游明朝</option>
+                <option value="Shippori Mincho">しっぽり明朝</option>
+                <option value="Hina Mincho">ひな明朝</option>
+                <option value="Zen Maru Gothic">ZEN丸ゴシック</option>
+            </select>
+        </div>
     </div>
 </div>
-
-    <script src="/js/script.js"></script>
+<script src="/js/script.js"></script>
 </body>
 </html>
