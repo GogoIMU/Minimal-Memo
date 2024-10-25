@@ -107,8 +107,8 @@ button {
 }
 
 button img {
-    width: 50px;
-    height: 50px;
+    width: 30px;
+    height: 30px;
 }
 
 #fontSelector {
@@ -116,7 +116,7 @@ button img {
     position: absolute; /* 絶対位置に変更 */
     top: 60px; /* ボタンエリアの下に表示 */
     left: 150px; /* 左側に配置 */
-    right: 0; /* 右側にも配置 */
+    right: 100px; /* 右側にも配置 */
     margin: 0 auto; /* セレクトボックスを中央揃えにする */
 }
 
